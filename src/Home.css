@@ -1,0 +1,53 @@
+
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #0b2c4d;
+  padding: 16px;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  margin: 16px;
+}
+
+.icon {
+  font-size: 50px;
+  color: #14b858;
+}
+
+.text {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 220px;
+    padding: 16px;
+  }
+  
+  .container{
+    flex-direction: column;
+  }
+
+  .icon {
+    font-size: 40px;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+}
+
+
