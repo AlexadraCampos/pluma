@@ -1,4 +1,5 @@
 import React from "react";
+import Chat from "./chat";
 
 const Home = () => {
   const handleNavigation = (path) => {
@@ -15,7 +16,7 @@ const Home = () => {
       </div>
 
       <div className="container">
-        <div onClick={() => handleNavigation("/bird")} className="card">
+        <div onClick={() => handleNavigation("/chat")} className="card">
           <div className="icon">📖</div>
           <p className="text">Guia de Espécies</p>
         </div>
