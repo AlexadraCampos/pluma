@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: pluma-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: PORT
+        value: 8080
+
+  - type: static
+    name: pluma-frontend
+    env: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: frontend/dist
