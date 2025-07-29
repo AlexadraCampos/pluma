@@ -3,26 +3,17 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Times New Roman', Times, serif;
-}
-
-body {
-    background: url(https://img.freepik.com/fotos-gratis/fundo-de-folhas-verdes-tropicais_53876-88891.jpg) no-repeat;
-    background-size: cover;
-    background-position: center;
-
 
 }
-
-
 
 .chat-container {
     max-width: 100%;
     margin: 50px;
     padding: 20px;
-    background: #ffffff10;
+    background-color: #001f3f;
     border-radius: 20px;
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 20px rgba(116, 103, 103, 0.2);
     color: #e6e2e2;
     font-family: Arial, sans-serif;
   }
@@ -38,7 +29,7 @@ body {
   .chat-box {
     height: 600px;
     overflow-y: auto;
-    background-color: #1f1c1c20;
+    background-color: #001f3f;
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 15px;
@@ -46,7 +37,7 @@ body {
   
   .chat-message {
     margin-bottom: 10px;
-    background-color: #4c5a8130;
+    background-color: #ced3e230;
     padding: 8px 12px;
     border-radius: 10px;
     width: fit-content;
@@ -67,7 +58,7 @@ body {
   }
   
   .chat-input button {
-    background-color: #6c63ff;
+    background-color: #00BFFF;
     color: #fff;
     border: none;
     padding: 10px 16px;
@@ -77,7 +68,7 @@ body {
   }
   
   .chat-input button:hover {
-    background-color: #5149c4;
+    background-color: #0095cc;
   }
   
   /* Responsivo para telas menores */
@@ -114,9 +105,7 @@ body {
     padding: 10px;
     width: 100%;
   }
-}
-
-@media (max-width: 480px) {
+  
   .chat-box {
     height: 200px;
   }
