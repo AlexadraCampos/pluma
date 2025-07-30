@@ -1,8 +1,9 @@
 import { WebSocketServer } from "ws";
 import fetch from "node-fetch";
 import dotenv from "dotenv";
-dotenv.config(); 
 
+
+dotenv.config(); 
 
 const wss = new WebSocketServer({ port: 8080 });
 
@@ -26,6 +27,7 @@ async function consultarChatIA(pergunta) {
   try {
     
     const API_KEY = process.env.OPENROUTER_API_KEY;
+  
     const resposta = await fetch(
       "https://openrouter.ai/api/v1/chat/completions",
       {

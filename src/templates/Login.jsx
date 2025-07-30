@@ -13,25 +13,22 @@ const Login = () => {
     console.log("Envio");
 
     if (username && password) {
-        console.log("Login bem-sucedido");
-        navigate("/Pluma");
+      console.log("Login bem-sucedido");
+      navigate("/Pluma");
     } else {
-        alert("Por favor Preencha todos os campos");
+      alert("Por favor Preencha todos os campos!");
     }
   };
 
   return (
-    <div className="container">
+    <div className="container-login">
       <div className="Login">
         {/* Lado esquerdo - logo + slogan */}
         <div className="login-banner">
-          <img
-            src="icon_pluma.png"
-            alt="Logo da Pluma"
-            className="banner-logo"
-          />
+          <img src="/pluma.png" alt="Logo da Pluma" className="banner-logo" />
           <p className="banner-text">
-            Web Pluma, você pode pesquisar sobre pássaros de forma rápida e fácil!
+            Web Pluma, você pode pesquisar sobre pássaros de forma rápida e
+            fácil!
           </p>
         </div>
 
@@ -67,9 +64,7 @@ const Login = () => {
             <a href="#">Esqueceu a senha?</a>
           </div>
 
-          <button>
-             Entrar
-          </button>
+          <button>Entrar</button>
 
           <div className="signup-link">
             <p>
