@@ -7,15 +7,14 @@
     "node": "18.x"
   },
   "scripts": {
-    "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "start": "node backend/server.js",
-    "dev": "node --watch backend/server.js"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
-    "dotenv": "^17.2.0",
+    "dotenv": "^17.2.1",
     "node-fetch": "^3.3.2",
     "puppeteer": "^24.12.1",
     "react": "^19.1.0",

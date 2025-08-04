@@ -1,9 +1,16 @@
 import { WebSocketServer } from "ws";
 import fetch from "node-fetch";
+import express from "express";
 import dotenv from "dotenv";
 dotenv.config(); 
 
-console.log("chave:", process.env.OPENROUTER_API_KEY);
+
+const app = express()
+
+app.get('/users', (request,response) => {
+  app.send('Rota de usuários');
+})
+app.listen(8081)
 
 const wss = new WebSocketServer({ port: 8080 });
 
