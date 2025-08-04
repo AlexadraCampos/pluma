@@ -16,7 +16,7 @@ const Login = () => {
       console.log("Login bem-sucedido");
       navigate("/Pluma");
     } else {
-      alert("Por favor Preencha todos os campos!");
+      // alert("Por favor Preencha todos os campos!");
     }
   };
 
