@@ -1,9 +1,9 @@
 import { WebSocketServer } from "ws";
 import fetch from "node-fetch";
 import dotenv from "dotenv";
-
-
 dotenv.config(); 
+
+console.log("chave:", process.env.OPENROUTER_API_KEY);
 
 const wss = new WebSocketServer({ port: 8080 });
 

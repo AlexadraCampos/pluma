@@ -18,19 +18,31 @@
   overflow-y: auto;
 }
 
+
+.sidebar button{
+  margin-bottom: 20px;
+}
+
 /* Botão de menu fixo */
 .menu-toggle-btn {
   position: absolute;
-  top: 19px;
-  left: 10%;
+  top: 3%;
+  left: 9%;
   z-index: 1100;
-  background-color: #1e1e2f;
+  background-color: rgba(198, 207, 199, 0.5);
   color: white;
   border: none;
   padding: 8px 12px;
   font-size: 20px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+
+
+.logo-container{
+  background: rgb(249, 245, 245);
+  margin-bottom: 20px;
 }
 
 /* Animações */
@@ -97,8 +109,8 @@
   .menu-toggle-btn {
     display: block;
     position: absolute;
-    top: 19px;
-    left: 30%;
+    top: 3%;
+    left: 37%;
     width: 40px;
   }
 }

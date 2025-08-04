@@ -59,7 +59,8 @@ const Pluma = () => {
     <div className="layout">
       {/* Botão para abrir/fechar o menu */}
       <button onClick={toggleMenu} className="menu-toggle-btn">
-        {menuVisivel ? "❌" : "☰"}
+        <img src={menuVisivel ? "https://img.icons8.com/?size=100&id=52PYBtPImWcZ&format=png&color=000000" : "https://img.icons8.com/?size=100&id=ogapbOENSeXT&format=png&color=000000" 
+        } alt="Menu" style={{ width: 24, height: 24}} />
       </button>
 
       {/* Menu lateral com animação */}
