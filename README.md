@@ -27,6 +27,15 @@ Ele oferece informações úteis sobre espécies, fichas de nascimento e cuidado
 - Zapier Webhooks
 - MongoDB ou PostgreSQL (opcional)
 
+📸 Demonstração
+
+![WebPluma](https://github.com/user-attachments/assets/c3a1bc6b-a2f2-4172-9aef-9655b14a5b14)
+
+
+👩‍💻 Desenvolvido por
+
+Alexandra Campos — @AlexadraCampos
+
 ## 🛠️ Instalação
 
 ### 1. Clone o repositório
