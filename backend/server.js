@@ -1,74 +1,25 @@
-import { WebSocketServer } from "ws";
-import fetch from "node-fetch";
+
 import express from "express";
+import http from "http";
 import dotenv from "dotenv";
-dotenv.config(); 
+import cors from "cors";
+import authRoutes from "./routes/usersroutes.js";
+import { setupWebSocket } from "./routes/bot.js";
 
+dotenv.config();
 
-const app = express()
+const app = express();
+const server = http.createServer(app);
 
-app.get('/users', (request,response) => {
-  app.send('Rota de usuários');
-})
-app.listen(8081)
+app.use(cors());
+app.use(express.json());
 
-const wss = new WebSocketServer({ port: 8080 });
+// Rotas de autenticação
+app.use("/api", authRoutes);
 
-wss.on("connection", (ws) => {
-  console.log("Novo Cliente conectado");
+// WebSocket
+setupWebSocket(server);
 
-  ws.on("message", async (message) => {
-    console.log("Mensagem recebida:", message);
-
-    const resposta = await consultarChatIA(message.toString());
-    console.log("Resposta enviada para o frontend:", resposta);
-    ws.send(resposta);
-  });
-
-  ws.send("Bem-vindo ao chat!");
+server.listen(3000, () => {
+  console.log("Servidor rodando na porta 3000");
 });
-
-console.log("Servidor WebSocket rodando na porta 8080");
-
-async function consultarChatIA(pergunta) {
-  try {
-    
-    const API_KEY = process.env.OPENROUTER_API_KEY;
-  
-    const resposta = await fetch(
-      "https://openrouter.ai/api/v1/chat/completions",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model: "mistralai/mistral-7b-instruct",
-          messages: [
-            {
-              role: "system",
-              content:
-                "Você é um especialista em aves. Responda somente perguntas sobre pássaros: espécies, ficha de nascimento ou cuidados gerais. Se a pergunta **não tiver relação com pássaros**, diga: *Desculpe, só posso responder perguntas sobre pássaros. Identifique corretamente pássaros populares como joão-de-barro, sabiá, papagaio, canário, beija-flor, entre outros comuns no Brasil.*",
-            },
-            {
-              role: "user",
-              content: pergunta,
-            },
-          ],
-        }),
-      }
-    );
-
-    const data = await resposta.json();
-    console.log("💬 Resposta bruta da API:", JSON.stringify(data, null, 2));
-
-    return (
-      data.choices?.[0]?.message?.content ||
-      "❌ A IA não retornou resposta válida."
-    );
-  } catch (error) {
-    console.error("❌ Erro ao consultar a IA:", error);
-    return "❌ Erro ao consultar a IA.";
-  }
-}
