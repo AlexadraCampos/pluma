@@ -6,7 +6,9 @@ Ele oferece informações úteis sobre espécies, fichas de nascimento e cuidado
 ## 📌 Funcionalidades
 
 - 🔍 Guia de Espécies
-- 💬 Integração com o Zapier (APIRouter) para automação.
+- 🐣 Ficha de Nascimento
+- ❤️ Cuidados Gerais
+- 💬 Integração com o Zapier para automação
 - 🌐 Interface amigável e responsiva com React
 - ⚙️ Backend escalável com Node.js 
 
@@ -21,17 +23,9 @@ Ele oferece informações úteis sobre espécies, fichas de nascimento e cuidado
 
 ### Backend
 
-- **Node.js + Express** ou **Django (Python)**
+- **Node.js + Express** (Javascript)**
 - Zapier Webhooks
-
-📸 Demonstração
-
-![WebPluma](https://github.com/user-attachments/assets/c3a1bc6b-a2f2-4172-9aef-9655b14a5b14)
-
-
-👩‍💻 Desenvolvido por
-
-Alexandra Campos — @AlexadraCampos
+- MongoDB ou PostgreSQL (opcional)
 
 ## 🛠️ Instalação
 

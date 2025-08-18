@@ -20,18 +20,6 @@ const Pluma = () => {
             <h2>🦜 Identificação de Aves</h2>
           </div>
         );
-      case "care":
-        return (
-          <div>
-            <h2>🍽️ Cuidados com Aves</h2>
-          </div>
-        );
-      case "treatment":
-        return (
-          <div>
-            <h2>💊 Tratamento de Doenças</h2>
-          </div>
-        );
       case "faq":
         return (
           <div>
@@ -72,10 +60,6 @@ const Pluma = () => {
         <button onClick={() => setSecaoAtual("chat")}>🦜 Chat (IA)</button>
         <button onClick={() => setSecaoAtual("identification")}>
           📘 Identificação
-        </button>
-        <button onClick={() => setSecaoAtual("care")}>🍽️ Cuidados</button>
-        <button onClick={() => setSecaoAtual("treatment")}>
-          💊 Tratamento
         </button>
         <button onClick={() => setSecaoAtual("faq")}>📚 FAQ</button>
         <button onClick={() => setSecaoAtual("legal")}>⚖️ Legais</button>
