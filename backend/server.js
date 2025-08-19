@@ -6,6 +6,7 @@ import cors from "cors";
 import authRoutes from "./routes/usersroutes.js";
 import { setupWebSocket } from "./routes/bot.js";
 
+
 dotenv.config();
 
 const app = express();
