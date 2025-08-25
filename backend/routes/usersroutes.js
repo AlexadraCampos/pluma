@@ -39,20 +39,25 @@ authRoutes.get("/users", async (request, response) => {
   let users = []
 
   if (request.query){
-    users = await prisma.user.findMany
-    where: {
-      name: request.query.name
-    }
+    
+    users = await prisma.user.findMany({
+      where: {
+        name: request.query.name,
+        email: request.query.name,
+        age: request.query.name
+      }
+  });
+
+    
     
   } else {
 
-    const users = await prisma.user.findMany();
+    users = await prisma.user.findMany();
 
   }
-
   
-
   response.status(200).json(users);
+
 });
 
 authRoutes.delete("/users/:id", async (request, response) => {

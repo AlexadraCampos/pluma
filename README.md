@@ -6,9 +6,7 @@ Ele oferece informações úteis sobre espécies, fichas de nascimento e cuidado
 ## 📌 Funcionalidades
 
 - 🔍 Guia de Espécies
-- 🐣 Ficha de Nascimento
-- ❤️ Cuidados Gerais
-- 💬 Integração com o Zapier para automação
+- 💬 Integração com o Openrouter para automação
 - 🌐 Interface amigável e responsiva com React
 - ⚙️ Backend escalável com Node.js 
 
@@ -24,8 +22,9 @@ Ele oferece informações úteis sobre espécies, fichas de nascimento e cuidado
 ### Backend
 
 - **Node.js + Express** (Javascript)**
-- Zapier Webhooks
-- MongoDB ou PostgreSQL (opcional)
+- Openrouter.ai
+- MongoDB 
+- Prisma
 
 ## 🛠️ Instalação
 
