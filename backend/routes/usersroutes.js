@@ -1,6 +1,7 @@
 import express, { request } from "express";
 import { PrismaClient } from "../src/generated/prisma/index.js";
 
+
 const prisma = new PrismaClient();
 
 const authRoutes = express.Router();
@@ -11,7 +12,7 @@ authRoutes.post("/users", async (request, response) => {
     data: {
       email: request.body.email,
       name: request.body.name,
-      age: request.body.age,
+      age: parseInt(request.body.age),
     },
   });
 

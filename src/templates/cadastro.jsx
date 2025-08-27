@@ -1,29 +1,51 @@
+import { Await } from "react-router-dom";
 import "../css/cadastro.css";
+import api from "../services/api";
+import { useEffect, useState, useRef } from "react";
+
 
 function Cadastro() {
-  const users = [
-    {
-      id: "12345",
-      name: "fulando",
-      age: 30,
-      email: "fulano@gmail.com",
-    },
-    {
-      id: "56789",
-      name: "fulando2",
-      age: 27,
-      email: "fulano23@gmail.com",
-    },
-  ];
 
+  const [users, setUsers] = useState([]);
+  
+  const inputName = useRef();
+  const inputAge = useRef();
+  const inputEmail = useRef();
+
+  async function createUsers() {
+    await api.post('/users', {
+      name: inputName.current.value,
+      age: inputAge.current.value,
+      email: inputEmail.current.value
+    });
+     
+  }
+
+
+   async function getUsers() {
+
+    const usersFromApi = await api.get('/users');
+    setUsers(usersFromApi.data)
+    
+  };
+
+  useEffect(() => {
+    getUsers()
+  }, []);
+
+  async function deleteUsers(id) {
+    await api.delete(`/users/${id}`);
+  }
+
+  // #parte html 
   return (
     <div className="container-cad">
       <form className="form-cad">
         <h1 className="text-form">Cadastro de Usuários</h1>
-        <input placeholder="Nome" name="nome" type="text"></input>
-        <input placeholder="Idade" name="age" type="number"></input>
-        <input placeholder="email" name="email" type="email"></input>
-        <button type="button">Cadastrar</button>
+        <input placeholder="Nome" name="nome" type="text" ref={inputName}></input>
+        <input placeholder="Idade" name="age" type="number" ref={inputAge}></input>
+        <input placeholder="email" name="email" type="email" ref={inputEmail}></input>
+        <button type="button" onClick={createUsers} >Cadastrar</button>
       </form>
 
       {users.map((user) => (
@@ -33,7 +55,7 @@ function Cadastro() {
             <p>Nome:  {user.name} </p>
             <p>Idade: {user.age} </p>
             <p>Email: {user.email} </p>
-            <button type="button" className="icon-delete">
+            <button onClick={() => deleteUsers(user.id)} type="button" className="icon-delete">
               <img
                 src="https://img.icons8.com/?size=100&id=TIoH8Dbt0cSQ&format=png&color=000000"
               />

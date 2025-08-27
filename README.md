@@ -7,8 +7,9 @@ Ele oferece informações úteis sobre espécies, fichas de nascimento e cuidado
 
 - 🔍 Guia de Espécies
 - 💬 Integração com o Openrouter para automação
-- 🌐 Interface amigável e responsiva com React
+- 🌐  Interface amigável e responsiva com React
 - ⚙️ Backend escalável com Node.js 
+- 🔨 Implementação da bibliteca axios
 
 ## 🚀 Tecnologias Utilizadas
 

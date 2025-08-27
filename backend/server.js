@@ -12,11 +12,17 @@ dotenv.config();
 const app = express();
 const server = http.createServer(app);
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173',
+  methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['content-type', 'Authorization'],
+  credentials: true
+}));
+
 app.use(express.json());
 
 // Rotas de autenticação
-app.use("/api", authRoutes);
+app.use("/api/users", authRoutes);
 
 // WebSocket
 setupWebSocket(server);
