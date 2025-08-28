@@ -1,7 +1,7 @@
 # 🪶 Pluma
 
-**Pluma** é um assistente virtual com inteligência artificial voltado para orientação e cuidados com animais. 
-Ele oferece informações úteis sobre espécies, fichas de nascimento e cuidados gerais, podendo ser integrado a plataformas como Zapier.
+**Pluma** é um assistente virtual com inteligência artificial voltado para orientação e cuidados com aves. 
+Ele oferece informações úteis sobre espécies, fichas de nascimento e cuidados gerais, podendo ser integrado a plataformas como openrouter.ai.
 
 ## 📌 Funcionalidades
 

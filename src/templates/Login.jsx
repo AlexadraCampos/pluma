@@ -1,24 +1,38 @@
 import "../css/login.css";
 import { FaUser, FaLock } from "react-icons/fa";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Envio");
-
-    if (username && password) {
-      console.log("Login bem-sucedido");
-      navigate("/Pluma");
-    } else {
-      // alert("Por favor Preencha todos os campos!");
+  
+    try {
+      const response = await fetch("http://localhost:3000/login", { 
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: username, password }),
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        console.log("Login bem-sucedido");
+        navigate("/Pluma");
+      } else {
+        alert(data.message || "E-mail ou senha inválidos");
+      }
+    } catch (error) {
+      console.error("Erro no login:", error);
+      alert("Erro ao conectar ao servidor");
     }
   };
+  
+  
 
   return (
     <div className="container-login">
@@ -61,6 +75,7 @@ const Login = () => {
               <input type="checkbox" />
               Lembrar de mim
             </label>
+            
             <a href="#">Esqueceu a senha?</a>
           </div>
 
@@ -68,13 +83,16 @@ const Login = () => {
 
           <div className="signup-link">
             <p>
-              Não tem conta? <a href="#">Registrar</a>
+              Não tem conta? <Link to="/cadastro">Registrar</Link>
             </p>
           </div>
         </form>
       </div>
     </div>
   );
+
+
+  
 };
 
 export default Login;
