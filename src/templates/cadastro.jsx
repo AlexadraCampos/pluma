@@ -2,6 +2,7 @@ import { Await } from "react-router-dom";
 import "../css/cadastro.css";
 import api from "../services/api";
 import { useEffect, useState, useRef } from "react";
+import { CgPassword } from "react-icons/cg";
 
 
 function Cadastro() {
@@ -11,16 +12,19 @@ function Cadastro() {
   const inputName = useRef();
   const inputAge = useRef();
   const inputEmail = useRef();
+  const inputPassword = useRef();
 
   async function createUsers() {
     await api.post('/users', {
       name: inputName.current.value,
       age: inputAge.current.value,
-      email: inputEmail.current.value
+      email: inputEmail.current.value,
+      password: inputPassword.current.value
     });
      
   }
 
+  alert("✅ Usuário cadastrado com sucesso!");
 
    async function getUsers() {
 
@@ -34,10 +38,22 @@ function Cadastro() {
   }, []);
 
   async function deleteUsers(id) {
-    await api.delete(`/users/${id}`);
+    try {
+      await api.delete(`/users/${id}`);
+      
+      // Atualiza a lista após deletar
+      getUsers();
+  
+      alert("🗑️ Usuário deletado com sucesso!");
+    } catch (error) {
+      console.error(error);
+      alert("❌ Erro ao deletar usuário.");
+    }
   }
+  
 
-  // #parte html 
+
+  // #parte front
   return (
     <div className="container-cad">
       <form className="form-cad">
@@ -45,6 +61,7 @@ function Cadastro() {
         <input placeholder="Nome" name="nome" type="text" ref={inputName}></input>
         <input placeholder="Idade" name="age" type="number" ref={inputAge}></input>
         <input placeholder="email" name="email" type="email" ref={inputEmail}></input>
+        <input placeholder="Senha" name="password" type="password" ref={inputPassword}></input>
         <button type="button" onClick={createUsers} >Cadastrar</button>
       </form>
 
@@ -55,6 +72,7 @@ function Cadastro() {
             <p>Nome:  {user.name} </p>
             <p>Idade: {user.age} </p>
             <p>Email: {user.email} </p>
+            <p>Senha: {user.password}</p>
             <button onClick={() => deleteUsers(user.id)} type="button" className="icon-delete">
               <img
                 src="https://img.icons8.com/?size=100&id=TIoH8Dbt0cSQ&format=png&color=000000"
@@ -62,7 +80,7 @@ function Cadastro() {
             </button>
           </ul>
         </div>
-      ))};
+      ))}
       
     </div>
   );

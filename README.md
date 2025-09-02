@@ -17,7 +17,7 @@ Ele oferece informações úteis sobre espécies, fichas de nascimento e cuidado
 
 - [React](https://reactjs.org/)
 - [Vite](https://vitejs.dev/)
-- CSS3
+- CSS3 e HTML
 - Axios (para requisições API)
 
 ### Backend

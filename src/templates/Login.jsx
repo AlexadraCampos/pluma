@@ -4,35 +4,43 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorEmail, setErrorEmail] = useState(""); 
+  const [errorSenha, setErrorSenha] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+    setErrorEmail("");
+    setErrorSenha("");
+
     try {
-      const response = await fetch("http://localhost:3000/login", { 
+      const response = await fetch("http://localhost:3000/api/users/Login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: username, password }),
+        body: JSON.stringify({ email, password }),
       });
-  
+
       const data = await response.json();
-  
+
       if (response.ok) {
-        console.log("Login bem-sucedido");
-        navigate("/Pluma");
-      } else {
-        alert(data.message || "E-mail ou senha inválidos");
+         navigate("/Pluma");
+        } else {
+
+        if (data.message?.includes("E-mail")) {
+          setErrorEmail("E-mail não cadastrado");
+        } else if (data.message?.includes("senha")) {
+          setErrorSenha("A senha que você inseriu está incorreta.");
+        } else {
+          setErrorEmail("E-mail ou senha inválidos");
+        }
       }
     } catch (error) {
       console.error("Erro no login:", error);
-      alert("Erro ao conectar ao servidor");
+      setErrorEmail("E-mail não cadastrado");
     }
   };
-  
-  
 
   return (
     <div className="container-login">
@@ -54,10 +62,14 @@ const Login = () => {
             <input
               type="email"
               placeholder="E-mail"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className={errorEmail ? "input-error" : ""}
             />
+         
+
             <FaUser className="icon" />
+            {errorEmail && <p className="error-message">{errorEmail}</p>}
           </div>
 
           <div>
@@ -66,8 +78,11 @@ const Login = () => {
               placeholder="Senha"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              className={errorSenha ? "input-error" : ""}
             />
+
             <FaLock className="icon" />
+            {errorSenha && <p className="error-message">{errorSenha}</p>}
           </div>
 
           <div className="recall-forget">
@@ -75,7 +90,7 @@ const Login = () => {
               <input type="checkbox" />
               Lembrar de mim
             </label>
-            
+
             <a href="#">Esqueceu a senha?</a>
           </div>
 
@@ -90,9 +105,6 @@ const Login = () => {
       </div>
     </div>
   );
-
-
-  
 };
 
 export default Login;

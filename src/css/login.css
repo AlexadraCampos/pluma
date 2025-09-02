@@ -144,6 +144,17 @@ button:hover {
     filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
 }
 
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.input-error {
+  border: 1px solid red;
+}
+
+
 /* 🔽 RESPONSIVO PARA TABLETS E CELULARES */
 @media (max-width: 768px) {
     .Login {

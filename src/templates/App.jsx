@@ -10,7 +10,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/Login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/Cadastro" element={<Cadastro />} />
         <Route path="/Pluma" element={<Pluma />} />
         <Route path="/Chat" element={<Chat />} /> 
