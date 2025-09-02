@@ -13,7 +13,8 @@ authRoutes.post("/users", async (request, response) => {
       email: request.body.email,
       name: request.body.name,
       age: parseInt(request.body.age),
-      password: request.body.password 
+      password: request.body.password,
+    
     },
   });
 
@@ -30,6 +31,7 @@ authRoutes.put("/users/:id", async (request, response) => {
       email: request.body.email,
       name: request.body.name,
       age: request.body.age,
+      
     },
   });
 
@@ -73,33 +75,37 @@ authRoutes.delete("/users/:id", async (request, response) => {
 });
 
 // # Endpoint de login
-
-authRoutes.post("/login", async (request, response) => {
-  const { email, password } = request.body;
+authRoutes.post("/Login", async (req, res) => {
+  const { email, password } = req.body;
 
   if (!email || !password) {
-    return response.status(400).json({ message: "E-mail e senha são obrigatórios." });
+    return res.status(400).json({ message: "Usuário e senha são obrigatórios." });
   }
 
   try {
-    // Verificar se o usuário existe
     const user = await prisma.user.findUnique({
-      where: { email },
+      where: { email }, 
     });
 
     if (!user) {
-      return response.status(401).json({ message: "Usuário não encontrado." });
+      return res.status(401).json({ message: "Usuário não cadastrado." });
+    }
+
+    // Verificação de senha condicional
+    if (!user.password) {
+      return res.status(400).json({ message: "Senha ainda não cadastrada." });
     }
 
     if (user.password !== password) {
-      return response.status(401).json({ message: "Senha incorreta." });
+      return res.status(401).json({ message: "Usuário ou senha inválidos." });
     }
 
-    return response.status(200).json({ message: "Login bem-sucedido", user });
+    return res.status(200).json({ message: "Login bem-sucedido", user });
   } catch (error) {
     console.error("Erro no login:", error);
-    return response.status(500).json({ message: "Erro no servidor." });
+    return res.status(500).json({ message: "Erro no servidor." });
   }
 });
+  
 
 export default authRoutes;
