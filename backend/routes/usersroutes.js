@@ -1,5 +1,6 @@
 import express, { request, response } from "express";
 import { PrismaClient } from "../src/generated/prisma/index.js";
+import crypto from "crypto";
 
 
 const prisma = new PrismaClient();
@@ -106,6 +107,38 @@ authRoutes.post("/Login", async (req, res) => {
     return res.status(500).json({ message: "Erro no servidor." });
   }
 });
+
+// Esqueci minha senha
+authRoutes.put("/password", async (request, response) => {
+  const { email, newPassword } = request.body;
+
+  if (!email || !newPassword) {
+    return response.status(400).json({ message: "E-mail e nova senha são obrigatórios." });
+  }
+
+  try {
+    const user = await prisma.user.findUnique({ where: { email } });
+
+    if (!user) {
+      return response.status(404).json({ message: "Usuário não encontrado." });
+    }
+
+    await prisma.user.update({
+      where: { email },
+      data: { password: newPassword },
+    });
+
+    return response.status(200).json({ message: "Senha redefinida com sucesso." });
+  } catch (error) {
+    console.error("Erro ao redefinir senha:", error);
+    return response.status(500).json({ message: "Erro no servidor." });
+  }
+});
+
+
+
+
+  
   
 
 export default authRoutes;

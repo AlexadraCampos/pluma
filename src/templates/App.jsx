@@ -4,6 +4,7 @@ import Pluma from "./Pluma";
 import Cadastro from './cadastro'; 
 import Chat from "./chat"; 
 import Login from "./Login";
+import Password from "./password";
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/Cadastro" element={<Cadastro />} />
+        <Route path="/password" element={<Password />} />
         <Route path="/Pluma" element={<Pluma />} />
         <Route path="/Chat" element={<Chat />} /> 
       </Routes>

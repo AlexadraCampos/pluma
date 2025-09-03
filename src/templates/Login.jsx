@@ -29,11 +29,11 @@ const Login = () => {
         } else {
 
         if (data.message?.includes("E-mail")) {
-          setErrorEmail("E-mail não cadastrado");
+          
         } else if (data.message?.includes("senha")) {
           setErrorSenha("A senha que você inseriu está incorreta.");
         } else {
-          setErrorEmail("E-mail ou senha inválidos");
+          setErrorEmail("E-mail não cadastrado");
         }
       }
     } catch (error) {
@@ -91,7 +91,7 @@ const Login = () => {
               Lembrar de mim
             </label>
 
-            <a href="#">Esqueceu a senha?</a>
+            <a href="/password">Esqueceu a senha?</a>
           </div>
 
           <button>Entrar</button>
