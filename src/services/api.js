@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:3000/api/users',
+  baseURL: 'https://pluma-backend.onrender.com/api/users',
 });
+
 
 export default api; 
