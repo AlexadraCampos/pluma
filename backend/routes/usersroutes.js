@@ -3,6 +3,7 @@ import { PrismaClient } from "../src/generated/prisma/index.js";
 import crypto from "crypto";
 
 
+
 const prisma = new PrismaClient();
 
 const authRoutes = express.Router();
@@ -135,6 +136,31 @@ authRoutes.put("/password", async (request, response) => {
   }
 });
 
+
+// Endpoint Cadastro
+authRoutes.post("/cadastro", async (req, res) => {
+  const { email, name, age, password } = req.body;
+
+  if (!email || !name || !age || !password) {
+    return res.status(400).json({ message: "Todos os campos são obrigatórios." });
+  }
+
+  try {
+    const existingUser = await prisma.user.findUnique({ where: { email } });
+    if (existingUser) {
+      return res.status(400).json({ message: "Usuário já cadastrado." });
+    }
+
+    const user = await prisma.user.create({
+      data: { email, name, age: parseInt(age), password },
+    });
+
+    return res.status(201).json({ message: "Cadastro realizado com sucesso.", user });
+  } catch (error) {
+    console.error("Erro no cadastro:", error);
+    return res.status(500).json({ message: "Erro no servidor." });
+  }
+});
 
 
 

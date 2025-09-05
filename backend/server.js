@@ -13,7 +13,7 @@ const app = express();
 const server = http.createServer(app);
 
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173/Login',
+  origin: [process.env.FRONTEND_URL || 'https://pluma-1.onrender.com', 'http://localhost:5173'],
   methods: ['GET', 'POST', 'DELETE', 'PUT'],
   allowedHeaders: ['content-type', 'Authorization'],
   credentials: true
