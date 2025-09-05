@@ -91,7 +91,7 @@ const Login = () => {
               Lembrar de mim
             </label>
 
-            <a href="/password">Esqueceu a senha?</a>
+            <Link to="/password">Esqueceu a senha?</Link>
           </div>
 
           <button>Entrar</button>
