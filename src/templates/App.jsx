@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Pluma from "./Pluma.jsx";
-import Cadastro from "./Cadastro.jsx";
+import Cadastro from "./cadastro.jsx";
 import Chat from "./Chat.jsx";
 import Login from "./Login.jsx";
 import Password from "./Password.jsx";
