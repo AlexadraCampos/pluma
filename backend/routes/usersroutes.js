@@ -77,7 +77,7 @@ authRoutes.delete("/users/:id", async (request, response) => {
 });
 
 // # Endpoint de login
-authRoutes.post("/login", async (req, res) => {
+authRoutes.post("/Login", async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -110,7 +110,7 @@ authRoutes.post("/login", async (req, res) => {
 });
 
 // Esqueci minha senha
-authRoutes.put("/password", async (request, response) => {
+authRoutes.put("/Password", async (request, response) => {
   const { email, newPassword } = request.body;
 
   if (!email || !newPassword) {
@@ -138,7 +138,7 @@ authRoutes.put("/password", async (request, response) => {
 
 
 // Endpoint Cadastro
-authRoutes.post("/cadastro", async (req, res) => {
+authRoutes.post("/Cadastro", async (req, res) => {
   const { email, name, age, password } = req.body;
 
   if (!email || !name || !age || !password) {

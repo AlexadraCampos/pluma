@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Chat from "./chat";
-import "../css/Home.css";
+import Chat from "./Chat";
+import "../css/home.css";
 
 const Pluma = () => {
   const [secaoAtual, setSecaoAtual] = useState("chat");
@@ -47,16 +47,27 @@ const Pluma = () => {
     <div className="layout">
       {/* Botão para abrir/fechar o menu */}
       <button onClick={toggleMenu} className="menu-toggle-btn">
-        <img src={menuVisivel ? "https://img.icons8.com/?size=100&id=52PYBtPImWcZ&format=png&color=000000" : "https://img.icons8.com/?size=100&id=ogapbOENSeXT&format=png&color=000000" 
-        } alt="Menu" style={{ width: 24, height: 24}} />
+        <img
+          src={
+            menuVisivel
+              ? "https://img.icons8.com/?size=100&id=52PYBtPImWcZ&format=png&color=000000"
+              : "https://img.icons8.com/?size=100&id=ogapbOENSeXT&format=png&color=000000"
+          }
+          alt="Menu"
+          style={{ width: 24, height: 24 }}
+        />
       </button>
 
       {/* Menu lateral com animação */}
       <aside className={`sidebar ${menuVisivel ? "slide-in" : "slide-out"}`}>
         <div className="logo-container">
-          <img src="icon_pluma.png" alt="Logo Pluma" style={{ padding: "5px", height: "40px", margin: "10px"}} />
+          <img
+            src="icon_pluma.png"
+            alt="Logo Pluma"
+            style={{ padding: "5px", height: "40px", margin: "10px" }}
+          />
         </div>
-        
+
         <button onClick={() => setSecaoAtual("chat")}>🦜 Chat (IA)</button>
         <button onClick={() => setSecaoAtual("identification")}>
           📘 Identificação
