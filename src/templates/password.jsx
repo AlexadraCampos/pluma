@@ -13,7 +13,7 @@ function ResetPassword() {
       }
   
       try {
-        const response = await api.put("/Password", { email, newPassword });
+        const response = await api.put("/password", { email, newPassword });
         setMessage(`✅ ${response.data.message}`);
         setEmail("");
         setNewPassword("");

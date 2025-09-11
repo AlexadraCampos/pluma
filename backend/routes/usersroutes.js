@@ -110,7 +110,7 @@ authRoutes.post("/Login", async (req, res) => {
 });
 
 // Esqueci minha senha
-authRoutes.put("/Password", async (request, response) => {
+authRoutes.put("/password", async (request, response) => {
   const { email, newPassword } = request.body;
 
   if (!email || !newPassword) {
