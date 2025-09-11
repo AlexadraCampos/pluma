@@ -12,8 +12,8 @@ const server = http.createServer(app);
 
 const allowedOrigins = [
   "https://pluma-1.onrender.com", // frontend no Render
-  "http://localhost:3000", // Backend
-  "https://localhost:5173" // Front
+  "https://localhost:5173", // Front local
+  "http://127.0.0.1:5173"
 ];
 
 app.use(cors({

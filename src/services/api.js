@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://pluma-backend.onrender.com/api',
+  baseURL: 'https://pluma-7rog.onrender.com',
 });
 
 // Interceptor para logs de debug
