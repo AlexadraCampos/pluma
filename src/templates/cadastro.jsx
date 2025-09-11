@@ -14,7 +14,7 @@ function Cadastro() {
 
   async function createUsers() {
     try {
-      await api.post("/cadastro", {
+      await api.post("users/cadastro", {
         name: inputName.current.value,
         age: inputAge.current.value,
         email: inputEmail.current.value,

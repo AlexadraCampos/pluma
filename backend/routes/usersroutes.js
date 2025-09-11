@@ -77,7 +77,7 @@ authRoutes.delete("/users/:id", async (request, response) => {
 });
 
 // # Endpoint de login
-authRoutes.post("/Login", async (req, res) => {
+authRoutes.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
