@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Chat from "./Chat";
-import "../css/home.css";
+import "../css/Home.css";
 
 const Pluma = () => {
   const [secaoAtual, setSecaoAtual] = useState("chat");
