@@ -16,7 +16,7 @@ const Login = () => {
     setErrorSenha("");
 
     try {
-      const response = await fetch("https://pluma-7rog.onrender.com/api/users/login", {
+      const response = await fetch("https://pluma-7rog.onrender.com/api/users/Login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -98,7 +98,7 @@ const Login = () => {
 
           <div className="signup-link">
             <p>
-              Não tem conta? <Link to="/cadastro">Registrar</Link>
+              Não tem conta? <Link to="/Cadastro">Registrar</Link>
             </p>
           </div>
         </form>

@@ -1,7 +1,5 @@
 import express, { request, response } from "express";
 import { PrismaClient } from "../src/generated/prisma/index.js";
-import crypto from "crypto";
-
 
 
 const prisma = new PrismaClient();
@@ -40,7 +38,7 @@ authRoutes.put("/users/:id", async (request, response) => {
   response.status(201).json(request.body);
 });
 
-authRoutes.get("/users", async (request, response) => {
+authRoutes.get("/", async (request, response) => {
 
   let users = []
 
@@ -163,8 +161,5 @@ authRoutes.post("/Cadastro", async (req, res) => {
 });
 
 
-
-  
-  
 
 export default authRoutes;
