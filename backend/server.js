@@ -16,7 +16,8 @@ app.use(cors({
   origin: [
     "http://localhost:5173",  // Frontend local (Vite)
     "http://localhost:3001",  
-    "https://pluma-1.onrender.com" // frontend em produção
+    "https://pluma-1.onrender.com", // frontend em produção
+    "https://pluma-7rog.onrender.com" // Baclend em produção
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
