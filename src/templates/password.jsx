@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../css/resetpassword.css";
+import api from "../services/api";
 
 function ResetPassword() {
     const [email, setEmail] = useState("");
@@ -13,7 +14,7 @@ function ResetPassword() {
       }
   
       try {
-        const response = await api.put("/password", { email, newPassword });
+        const response = await api.put("/api/users/password", { email, newPassword });
         setMessage(`✅ ${response.data.message}`);
         setEmail("");
         setNewPassword("");

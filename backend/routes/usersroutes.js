@@ -7,21 +7,8 @@ const prisma = new PrismaClient();
 const authRoutes = express.Router();
 authRoutes.use(express.json());
 
-authRoutes.post("/users", async (request, response) => {
-  await prisma.user.create({
-    data: {
-      email: request.body.email,
-      name: request.body.name,
-      age: parseInt(request.body.age),
-      password: request.body.password,
-    
-    },
-  });
 
-  response.status(201).json(request.body);
-});
-
-authRoutes.put("/users/:id", async (request, response) => {
+authRoutes.put("/api/users/:id", async (request, response) => {
   await prisma.user.update({
     where: {
       id: request.params.id,
@@ -38,7 +25,7 @@ authRoutes.put("/users/:id", async (request, response) => {
   response.status(201).json(request.body);
 });
 
-authRoutes.get("/", async (request, response) => {
+authRoutes.get("/api/users", async (request, response) => {
 
   let users = []
 
@@ -64,7 +51,7 @@ authRoutes.get("/", async (request, response) => {
 
 });
 
-authRoutes.delete("/users/:id", async (request, response) => {
+authRoutes.delete("/api/users/:id", async (request, response) => {
   await prisma.user.delete({
     where: {
       id: request.params.id,
@@ -75,7 +62,7 @@ authRoutes.delete("/users/:id", async (request, response) => {
 });
 
 // # Endpoint de login
-authRoutes.post("/Login", async (req, res) => {
+authRoutes.post("/api/users/Login", async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -108,7 +95,7 @@ authRoutes.post("/Login", async (req, res) => {
 });
 
 // Esqueci minha senha
-authRoutes.put("/password", async (request, response) => {
+authRoutes.put("/api/users/password", async (request, response) => {
   const { email, newPassword } = request.body;
 
   if (!email || !newPassword) {
@@ -136,7 +123,7 @@ authRoutes.put("/password", async (request, response) => {
 
 
 // Endpoint Cadastro
-authRoutes.post("/Cadastro", async (req, res) => {
+authRoutes.post("/api/users", async (req, res) => {
   const { email, name, age, password } = req.body;
 
   if (!email || !name || !age || !password) {

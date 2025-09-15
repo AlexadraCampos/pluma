@@ -14,10 +14,9 @@ const server = http.createServer(app);
 // Configuração de CORS
 app.use(cors({
   origin: [
-    "http://localhost:5173",  // Frontend local (Vite)
-    "http://localhost:3001",  
+    "http://localhost:5173",
     "https://pluma-1.onrender.com", // frontend em produção
-    "https://pluma-7rog.onrender.com" // Baclend em produção
+    "https://pluma-7rog.onrender.com" // Backend em produção
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
@@ -25,14 +24,14 @@ app.use(cors({
 
 
 // Rotas de autenticação
-app.use("/api/users", authRoutes);
+app.use(authRoutes);
 
 // WebSocket
 setupWebSocket(server);
 
 
-app.listen(3000, () => {
-  console.log("Servidor rodando na porta 3000");
+app.listen(5000, () => {
+  console.log("Servidor rodando na porta 5000");
 });
 
 

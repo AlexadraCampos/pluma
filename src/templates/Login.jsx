@@ -2,6 +2,7 @@ import "../css/login.css";
 import { FaUser, FaLock } from "react-icons/fa";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import api from "../services/api"; 
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,32 +17,32 @@ const Login = () => {
     setErrorSenha("");
 
     try {
-      const response = await fetch("https://pluma-7rog.onrender.com/api/users/Login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+      const response = await api.post("/users/Login", { email, password });
 
-      const data = await response.json();
-
-      if (response.ok) {
-         navigate("/Pluma");
-        } else {
-
-        if (data.message?.includes("E-mail")) {
-          
-        } else if (data.message?.includes("senha")) {
-          setErrorSenha("A senha que você inseriu está incorreta.");
-        } else {
-          setErrorEmail("E-mail não cadastrado");
-        }
+      if (response.status === 200) {
+        
+        navigate("/Pluma");
       }
     } catch (error) {
       console.error("Erro no login:", error);
-      setErrorEmail("E-mail não cadastrado");
+
+      if (error.response) {
+        const msg = error.response.data?.message || "";
+
+        if (msg.includes("E-mail")) {
+          setErrorEmail("E-mail não cadastrado");
+        } else if (msg.includes("senha")) {
+          setErrorSenha("A senha que você inseriu está incorreta.");
+        } else {
+          setErrorEmail("Erro ao fazer login. Verifique os dados.");
+        }
+      } else {
+        setErrorEmail("Não foi possível conectar ao servidor.");
+      }
     }
   };
 
+   
   return (
     <div className="container-login">
       <div className="Login">

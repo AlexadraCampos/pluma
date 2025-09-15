@@ -1,9 +1,6 @@
 import { WebSocketServer } from "ws";
 import fetch from "node-fetch";
 
-
-
-
 // Conexão WebSocket para comunicação do bot em tempo real
 async function consultarChatIA(pergunta) {
   try {
