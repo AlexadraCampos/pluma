@@ -10,16 +10,12 @@ const app = express();
 app.use(express.json());
 
 // Configuração de CORS
-app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://pluma-1.onrender.com", // frontend em produção
-    "https://pluma-7rog.onrender.com" // Backend em produção
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"]
-}));
-
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*'); 
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', '*'); 
+  next();
+});
 
 // Rotas de autenticação
 app.use("/usuarios", usuariosRoutes );
