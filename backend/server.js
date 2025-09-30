@@ -9,22 +9,11 @@ app.use(express.json());
 
 // Middleware CORS manual
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*'); 
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Origin', '');
+  res.setHeader('Access-Control-Allow-Methods', '');
   res.setHeader('Access-Control-Allow-Headers', '*');
   next();
 });
-
-// Configuração de CORS com pacote
-app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://pluma-1.onrender.com",
-    "https://pluma-7rog.onrender.com"
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"]
-}));
 
 // Rotas de autenticação
 app.use("/usuarios", usuariosRoutes );
