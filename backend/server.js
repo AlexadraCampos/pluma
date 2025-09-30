@@ -1,15 +1,13 @@
-import express from "express";
-import http from "http";
-import dotenv from "dotenv";
-import cors from "cors";
-import authRoutes from "./routes/usersroutes.js";
-import { setupWebSocket } from "./routes/bot.js";
 
-dotenv.config();
+import cors from "cors";
+import usuariosRoutes from "./routes/usuarios.js"; 
+import { setupWebSocket } from "./routes/bot.js";
+import express from 'express';
+import http from 'http';
+
 
 const app = express();
-const server = http.createServer(app);
-
+app.use(express.json());
 
 // Configuração de CORS
 app.use(cors({
@@ -24,15 +22,15 @@ app.use(cors({
 
 
 // Rotas de autenticação
-app.use(authRoutes);
+app.use("/usuarios", usuariosRoutes );
 
 // WebSocket
+const server = http.createServer(app);
 setupWebSocket(server);
 
 
-app.listen(5000, () => {
-  console.log("Servidor rodando na porta 5000");
-});
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`✅ Servidor rodando em http://localhost:${PORT}`));
 
 
 export default app;

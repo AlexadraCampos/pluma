@@ -2,7 +2,7 @@ import { Await } from "react-router-dom";
 import "../css/cadastro.css";
 import api from "../services/api";
 import { useEffect, useState, useRef } from "react";
-import { CgPassword } from "react-icons/cg";
+
 
 function Cadastro() {
   const [users, setUsers] = useState([]);
@@ -14,8 +14,8 @@ function Cadastro() {
 
   async function createUsers() {
     try {
-      await api.post("/users", {
-        name: inputName.current.value,
+        await api.post("/usuarios/Cadastro", {
+        nome: inputName.current.value,
         age: inputAge.current.value,
         email: inputEmail.current.value,
         password: inputPassword.current.value,
@@ -37,7 +37,7 @@ function Cadastro() {
   }
 
   async function getUsers() {
-    const usersFromApi = await api.get("/users");
+    const usersFromApi = await api.get("/usuarios");
     setUsers(usersFromApi.data);
   }
 
@@ -45,11 +45,11 @@ function Cadastro() {
     getUsers();
   }, []);
 
-  async function deleteUsers(id) {
+  async function deleteUsers(email) {
     try {
-      await api.delete(`/users/${id}`);
-      alert("🗑️ Usuário deletado com sucesso!");
-      getUsers(); // Atualiza a lista após deletar
+      await api.delete(`/usuarios/${email}`);
+      alert("🗑 Usuário deletado com sucesso!");
+      getUsers();
     } catch (error) {
       console.error(error);
       alert("❌ Erro ao deletar usuário.");
@@ -72,15 +72,15 @@ function Cadastro() {
       </form>
 
       {users.map((user) => (
-        <div key={user.id}>
+        <div key={user._id}>
           <ul className="card-cad ">
             <h2>Usuários Cadastrados</h2>
-            <p>Nome: {user.name} </p>
+            <p>Nome:  {user.nome} </p>
             <p>Idade: {user.age} </p>
             <p>Email: {user.email} </p>
-            <p>Senha: {user.password}</p>
+            <p>Senha: {/* não mostrar o hash */}</p>
             <button
-              onClick={() => deleteUsers(user.id)}
+              onClick={() => deleteUsers(user.email)}
               type="button"
               className="icon-delete"
             >

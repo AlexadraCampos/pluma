@@ -17,18 +17,17 @@ const Login = () => {
     setErrorSenha("");
 
     try {
-      const response = await api.post("/users/Login", { email, password });
-
+      const response = await api.post("/usuarios/Login", { email, password });
+    
       if (response.status === 200) {
-        
         navigate("/Pluma");
       }
     } catch (error) {
       console.error("Erro no login:", error);
-
+    
       if (error.response) {
         const msg = error.response.data?.message || "";
-
+    
         if (msg.includes("E-mail")) {
           setErrorEmail("E-mail não cadastrado");
         } else if (msg.includes("senha")) {
@@ -40,9 +39,8 @@ const Login = () => {
         setErrorEmail("Não foi possível conectar ao servidor.");
       }
     }
-  };
-
-   
+  }
+    
   return (
     <div className="container-login">
       <div className="Login">
