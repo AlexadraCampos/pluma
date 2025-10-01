@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Pluma from "./Pluma.jsx";
 import Cadastro from "./Cadastro.jsx";
-import Chat from "./chat.jsx";
+import Chat from "./Chat.jsx";
 import Login from "./Login.jsx";
 import Password from "./password.jsx";
 
@@ -15,7 +15,7 @@ function App() {
         <Route path="/Cadastro" element={<Cadastro />} />
         <Route path="/password" element={<Password />} />
         <Route path="/Pluma" element={<Pluma />} />
-        <Route path="/chat" element={<Chat />} />
+        <Route path="/Chat" element={<Chat />} />
       </Routes>
     </Router>
   );

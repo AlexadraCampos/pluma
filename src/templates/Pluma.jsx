@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Chat from "./chat";
+import Chat from "./Chat";
 import "../css/Home.css";
 
 const Pluma = () => {
