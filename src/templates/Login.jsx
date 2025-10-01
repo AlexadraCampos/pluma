@@ -17,10 +17,10 @@ const Login = () => {
     setErrorSenha("");
 
     try {
-      const response = await api.post("/usuarios/Login", { email, password });
+      const response = await api.post("/usuarios/login", { email, password });
     
       if (response.status === 200) {
-        navigate("/Pluma");
+        navigate("/pluma");
       }
     } catch (error) {
       console.error("Erro no login:", error);
@@ -97,7 +97,7 @@ const Login = () => {
 
           <div className="signup-link">
             <p>
-              Não tem conta? <Link to="/Cadastro">Registrar</Link>
+              Não tem conta? <Link to="/cadastro">Registrar</Link>
             </p>
           </div>
         </form>

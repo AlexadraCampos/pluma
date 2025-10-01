@@ -1,5 +1,5 @@
 import cors from "cors";
-import usuariosRoutes from "./routes/usuarios.js"; 
+import usuariosRoutes from "./routes/usuarios.js";
 import { setupWebSocket } from "./routes/bot.js";
 import express from 'express';
 import http from 'http';
@@ -7,18 +7,15 @@ import http from 'http';
 const app = express();
 app.use(express.json());
 
-app.use(cors({
+const corsOptions = {
   origin: '*',
-  methods: [ "GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorizatin"] 
-}));
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+};
 
-app.options('*', cors());
+app.use(cors(corsOptions));
+app.use("/usuarios", usuariosRoutes);
 
-// Rotas de autenticação
-app.use("/usuarios", usuariosRoutes );
-
-// WebSocket
 const server = http.createServer(app);
 setupWebSocket(server);
 

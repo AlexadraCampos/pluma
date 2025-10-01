@@ -18,7 +18,7 @@ const client = new MongoClient(uri);
 
 
 //  Rota login - 
-router.post("/Login", async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     await client.connect();
     const { email, password } = req.body;
@@ -93,7 +93,7 @@ router.get("/", async (req, res) => {
 });
 
 // rota cadastro
-router.post("/Cadastro", async (req, res) => {
+router.post("/cadastro", async (req, res) => {
   try {
     await client.connect();
     const usuarios = client.db(dbName).collection(collectionName);
