@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-  origin: '*',
+  origin: ["https://pluma-1.onrender.com"],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
 };
