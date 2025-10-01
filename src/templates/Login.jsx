@@ -17,7 +17,7 @@ const Login = () => {
     setErrorSenha("");
 
     try {
-      const response = await api.post("/usuarios/login", { email, password });
+      const response = await api.post("/usuarios/Login", { email, password });
     
       if (response.status === 200) {
         navigate("/Pluma");
