@@ -20,7 +20,7 @@ const Login = () => {
       const response = await api.post("/usuarios/login", { email, password });
     
       if (response.status === 200) {
-        navigate("/pluma");
+        navigate("/Pluma");
       }
     } catch (error) {
       console.error("Erro no login:", error);

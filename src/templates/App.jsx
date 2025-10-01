@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Pluma from "./pluma.jsx";
+import Pluma from "./Pluma.jsx";
 import Cadastro from "./cadastro.jsx";
 import Chat from "./chat.jsx";
 import Login from "./login.jsx";
@@ -14,7 +14,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/password" element={<Password />} />
-        <Route path="/pluma" element={<Pluma />} />
+        <Route path="/Pluma" element={<Pluma />} />
         <Route path="/chat" element={<Chat />} />
       </Routes>
     </Router>
