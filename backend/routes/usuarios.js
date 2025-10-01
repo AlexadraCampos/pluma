@@ -48,7 +48,7 @@ router.post("/Login", async (req, res) => {
 });
 
 //  Rota Redefinição de senha 
-router.put("/password", async (req, res) => {
+router.put("/Password", async (req, res) => {
   try {
     await client.connect();
     const { email, newPassword } = req.body;
