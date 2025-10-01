@@ -7,13 +7,13 @@ import http from 'http';
 const app = express();
 app.use(express.json());
 
-// Middleware CORS manual
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '');
-  res.setHeader('Access-Control-Allow-Methods', '');
-  res.setHeader('Access-Control-Allow-Headers', '*');
-  next();
-});
+app.use(cors({
+  origin: '*',
+  methods: [ "GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorizatin"] 
+}));
+
+app.options('*', cors());
 
 // Rotas de autenticação
 app.use("/usuarios", usuariosRoutes );
