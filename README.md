@@ -40,6 +40,6 @@ cd pluma
 
 📸 Demonstração
 
-<img width="1080" height="1080" alt="Pluma" src="WebPluma.jpg" />
+<img width="1080" height="1080" alt="Pluma" src=".\public\WebPluma.jpg"/>
 
 

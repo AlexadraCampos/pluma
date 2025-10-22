@@ -9,6 +9,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
+app.use(cors(corsOptions));
 app.use(express.json());
 
 
@@ -23,9 +24,8 @@ const corsOptions = {
   credentials: true
 };
 
-app.use(cors(corsOptions));
 
-app.use('/usuarios', usuariosRoutes);
+app.use('/api', usuariosRoutes);
 
 const server = http.createServer(app);
 setupWebSocket(server);
