@@ -35,6 +35,11 @@ Ele oferece informações úteis sobre espécies, fichas de nascimento e cuidado
 git clone https://github.com/AlexadraCampos/pluma
 cd pluma
 
-
 # React + Vite
+
+
+📸 Demonstração
+
+<img width="1080" height="1080" alt="Pluma" src="WebPluma.jpg" />
+
 

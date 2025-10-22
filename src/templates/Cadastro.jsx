@@ -1,33 +1,22 @@
-import { Await } from "react-router-dom";
 import "../css/cadastro.css";
 import api from "../services/api";
 import { useEffect, useState, useRef } from "react";
 
-
 function Cadastro() {
   const [users, setUsers] = useState([]);
-
-  const inputName = useRef();
-  const inputAge = useRef();
   const inputEmail = useRef();
   const inputPassword = useRef();
 
   async function createUsers() {
     try {
-        await api.post("/usuarios/Cadastro", {
-        nome: inputName.current.value,
-        age: inputAge.current.value,
+      await api.post("/usuarios/Cadastro", {
         email: inputEmail.current.value,
         password: inputPassword.current.value,
       });
 
       alert("✅ Usuário cadastrado com sucesso!");
-
       getUsers();
 
-      // Limpa os campos
-      inputName.current.value = "";
-      inputAge.current.value = "";
       inputEmail.current.value = "";
       inputPassword.current.value = "";
     } catch (error) {
@@ -37,13 +26,13 @@ function Cadastro() {
   }
 
   async function getUsers() {
-    const usersFromApi = await api.get("/usuarios");
-    setUsers(usersFromApi.data);
+    try {
+      const response = await api.get("/usuarios");
+      setUsers(response.data);
+    } catch (error) {
+      console.error("Erro ao buscar usuários:", error);
+    }
   }
-
-  useEffect(() => {
-    getUsers();
-  }, []);
 
   async function deleteUsers(email) {
     try {
@@ -56,15 +45,16 @@ function Cadastro() {
     }
   }
 
-  // #parte front
+  useEffect(() => {
+    getUsers();
+  }, []);
+
   return (
     <div className="container-cad">
       <form className="form-cad">
         <h1 className="text-form">Cadastro de Usuários</h1>
-        <input placeholder="Nome" name="nome" type="text" ref={inputName}></input>
-        <input placeholder="Idade" name="age" type="number" ref={inputAge}></input>
-        <input placeholder="email" name="email" type="email" ref={inputEmail}></input>
-        <input placeholder="Senha"  name="password" type="password" ref={inputPassword}></input>
+        <input placeholder="Email" type="email" ref={inputEmail} />
+        <input placeholder="Senha" type="password" ref={inputPassword} />
 
         <button type="button" onClick={createUsers}>
           Cadastrar
@@ -73,12 +63,9 @@ function Cadastro() {
 
       {users.map((user) => (
         <div key={user._id}>
-          <ul className="card-cad ">
+          <ul className="card-cad">
             <h2>Usuários Cadastrados</h2>
-            <p>Nome:  {user.nome} </p>
-            <p>Idade: {user.age} </p>
-            <p>Email: {user.email} </p>
-            <p>Senha: {/* não mostrar o hash */}</p>
+            <p>Email: {user.email}</p>
             <button
               onClick={() => deleteUsers(user.email)}
               type="button"
