@@ -15,17 +15,20 @@ Ele oferece informações úteis sobre espécies, fichas de nascimento e cuidado
 
 ### Frontend
 
+### React + Vite
 - [React](https://reactjs.org/)
 - [Vite](https://vitejs.dev/)
 - CSS3 e HTML
 - Axios (para requisições API)
+
+
 
 ### Backend
 
 - **Node.js + Express** (Javascript)**
 - Openrouter.ai
 - MongoDB 
-- Prisma
+
 
 📸 Demonstração
 
@@ -39,7 +42,7 @@ Ele oferece informações úteis sobre espécies, fichas de nascimento e cuidado
 git clone https://github.com/AlexadraCampos/pluma
 cd pluma
 
-# React + Vite
+
 
 
 
