@@ -9,7 +9,7 @@ function Cadastro() {
 
   async function createUsers() {
     try {
-      await api.post("/usuarios/Cadastro", {
+      await api.post("/usuarios", {
         email: inputEmail.current.value,
         password: inputPassword.current.value,
       });

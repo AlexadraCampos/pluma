@@ -27,6 +27,10 @@ Ele oferece informações úteis sobre espécies, fichas de nascimento e cuidado
 - MongoDB 
 - Prisma
 
+📸 Demonstração
+
+<img src="src/assets/demo.jpg" alt="Plumaweb" width="1080"/>
+
 ## 🛠️ Instalação
 
 ### 1. Clone o repositório
@@ -38,8 +42,6 @@ cd pluma
 # React + Vite
 
 
-📸 Demonstração
 
-<img width="1080" height="1080" alt="Pluma" src=".\public\WebPluma.jpg"/>
 
 
