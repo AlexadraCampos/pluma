@@ -9,7 +9,7 @@ function Cadastro() {
 
   async function createUsers() {
     try {
-      await api.post("/usuarios", {
+      await api.post("/usuarios/Cadastro", {
         email: inputEmail.current.value,
         password: inputPassword.current.value,
       });
@@ -27,7 +27,7 @@ function Cadastro() {
 
   async function getUsers() {
     try {
-      const response = await api.get("/usuarios");
+      const response = await api.get("/usuarios/Cadastro");
       setUsers(response.data);
     } catch (error) {
       console.error("Erro ao buscar usuários:", error);
