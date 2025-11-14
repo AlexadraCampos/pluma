@@ -1,5 +1,5 @@
 import express from "express";
-import { client } from "../server";
+import { client } from "../server.js";
 import bcrypt from "bcrypt";
 
 
