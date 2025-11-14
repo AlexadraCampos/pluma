@@ -10,6 +10,7 @@ Ele oferece informações úteis sobre espécies, fichas de nascimento e cuidado
 - 🌐  Interface amigável e responsiva com React
 - ⚙️ Backend escalável com Node.js 
 - 🔨 Implementação da bibliteca axios
+- 🤖 Fluxo do bot e do chat
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -20,14 +21,23 @@ Ele oferece informações úteis sobre espécies, fichas de nascimento e cuidado
 - [Vite](https://vitejs.dev/)
 - CSS3 e HTML
 - Axios (para requisições API)
+- Responsividade mobile-friendly
 
 
 
 ### Backend
 
 - **Node.js + Express** (Javascript)**
-- Openrouter.ai
+- Integração com Openrouter.ai
 - MongoDB 
+- WebSocket para comunicação em tempo real
+
+## 🛑 Aviso Técnico
+
+O frontend do projeto Pluma consome este backend via API REST e WebSocket.
+Para analisar a lógica do servidor, rotas, autenticação, conexão com MongoDB e o funcionamento do WebSocket, consulte o repositório backend:
+
+🔗 Backend Pluma https://github.com/AlexadraCampos/backend_pluma
 
 
 📸 Demonstração
@@ -40,7 +50,7 @@ Ele oferece informações úteis sobre espécies, fichas de nascimento e cuidado
 
 ```bash
 git clone https://github.com/AlexadraCampos/pluma
-cd pluma
+
 
 
 
