@@ -3,7 +3,6 @@ import  router from "./routes/usuarios.js";
 import { setupWebSocket } from "./routes/bot.js";
 import express from 'express';
 import http from 'http';
-import { MongoClient } from 'mongodb';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -20,9 +19,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-//  Conexão com o banco
-const uri = process.env.MONGO_URI; 
-export const client = new MongoClient(uri);
 
 app.use('/api', router);
 
