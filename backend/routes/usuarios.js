@@ -18,7 +18,9 @@ const client = new MongoClient(uri);
 
 
 //  Endpoint login - 
-router.post("/", async (req, res) => {
+router.post("/usuarios/Login", async (req, res) => {
+     console.log("🟢 passou aqui login");
+ 
   try {
     await client.connect();
     const db = client.db(dbName);
@@ -48,6 +50,39 @@ router.post("/", async (req, res) => {
   }
 });
 
+
+// Endpoint Cadastro
+router.post("/usuarios/Cadastro", async (req, res) => {
+  console.log("🟢 passou aqui Cadastro!");
+
+  try {
+    await client.connect();
+    const db = client.db(dbName);
+    const userCollection = db.collection("usuarios");
+
+    const { email, password } = req.body; //  pega os dados enviados
+
+    if (!email || !password) {
+      return res.status(400).json({ message: "🚫 E-mail e senha são obrigatórios." });
+    }
+
+    // criptografar senha
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const resultado = await userCollection.insertOne({
+      email,
+      password: hashedPassword,
+    });
+
+    res.status(201).json({ 
+      message: "✅ Usuário cadastrado com sucesso!", 
+      userId: resultado.insertedId 
+    });
+  } catch (error) {
+    console.error("Erro ao cadastrar usuário:", error);
+    res.status(500).json({ message: "❌ Erro ao cadastrar usuário" });
+  }
+});
 
 //  Rota Redefinição de senha 
 router.put("/Password", async (req, res) => {
@@ -84,7 +119,9 @@ router.put("/Password", async (req, res) => {
 });
 
 // Rota Listagem de Usuários
-router.get("/", async (req, res) => {
+router.get("/usuarios", async (req, res) => {
+  console.log("🟢 buscando usuários");
+ 
   try {
     await client.connect();
     const db = client.db(dbName);
@@ -94,39 +131,6 @@ router.get("/", async (req, res) => {
   } catch (error) {
     console.error("Erro ao buscar usuários:", error);
     res.status(500).json({ message: "❌ Erro ao buscar usuários." });
-  }
-});
-
-// rota cadastro
-router.post("/", async (req, res) => {
-  try {
-    await client.connect();
-    const db = client.db(dbName);
-    const userCollection = db.collection("usuarios");
-
-    const { nome, age, email, password } = req.body; //  pega os dados enviados
-
-    if (!email || !password) {
-      return res.status(400).json({ message: "🚫 E-mail e senha são obrigatórios." });
-    }
-
-    // criptografar senha
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const resultado = await userCollection.insertOne({
-      nome,
-      age,
-      email,
-      password: hashedPassword,
-    });
-
-    res.status(201).json({ 
-      message: "✅ Usuário cadastrado com sucesso!", 
-      userId: resultado.insertedId 
-    });
-  } catch (error) {
-    console.error("Erro ao cadastrar usuário:", error);
-    res.status(500).json({ message: "❌ Erro ao cadastrar usuário" });
   }
 });
 

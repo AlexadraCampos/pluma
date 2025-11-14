@@ -1,5 +1,5 @@
 import cors from "cors";
-import  usuariosRoutes from "./routes/usuarios.js";
+import  router from "./routes/usuarios.js";
 import { setupWebSocket } from "./routes/bot.js";
 import express from 'express';
 import http from 'http';
@@ -26,7 +26,7 @@ export const client = new MongoClient(uri);
 
 
 
-app.use('/api', usuariosRoutes);
+app.use('/api', router);
 
 const server = http.createServer(app);
 setupWebSocket(server);
