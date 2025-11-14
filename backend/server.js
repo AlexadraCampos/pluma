@@ -1,6 +1,6 @@
 import cors from "cors";
-import  router from "../routes/usuarios.js";
-import { setupWebSocket } from "../routes/bot.js";
+import  router from "./routes/usuarios.js";
+import { setupWebSocket } from "./routes/bot.js";
 import express from 'express';
 import http from 'http';
 import { MongoClient } from 'mongodb';
