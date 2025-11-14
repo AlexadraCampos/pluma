@@ -24,14 +24,17 @@ app.use(cors(corsOptions));
 const uri = process.env.MONGO_URI; 
 export const client = new MongoClient(uri);
 
-
-
 app.use('/api', router);
 
+
+// Servidor HTTP real
 const server = http.createServer(app);
+
+// WebSocket usar mesmo servidor
 setupWebSocket(server);
 
+// Porta exigida pelo Render
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`✅ Servidor rodando em http://localhost:${PORT}`));
+server.listen(PORT, () => console.log(`✅ Servidor rodando em http://localhost:${PORT}`));
 
 export default app;
