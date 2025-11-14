@@ -1,20 +1,16 @@
 import express from "express";
-import { MongoClient } from "mongodb";
+import { client } from "../server";
 import bcrypt from "bcrypt";
 
 
 const router = express.Router();
 
 
-const Usuario= "Alexandra's Org - 2025-08-18";
-const senha = "jMiZUv0gAXmgiomz";
-const clusterUrl = "pluma.xt4mndh.mongodb.net";
+// const Usuario= "Alexandra's Org - 2025-08-18";
+// const senha = "jMiZUv0gAXmgiomz";
+// const clusterUrl = "pluma.xt4mndh.mongodb.net";
 const dbName = "plumaweb"
 
-
-
-const uri = "mongodb+srv://pluma:zrDZJw75zP9ZpXag@pluma.xt4mndh.mongodb.net/?retryWrites=true&w=majority&appName=pluma"
-const client = new MongoClient(uri);
 
 
 //  Endpoint login - 
