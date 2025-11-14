@@ -7,7 +7,7 @@ const Chat = () => {
   const [chat, setChat] = useState([]);
 
   useEffect(() => {
-    const ws = new WebSocket("wss://pluma-7rog.onrender.com");
+    const ws = new WebSocket("wss://backend-pluma.onrender.com");
     setSocket(ws);
 
     ws.onopen = () => console.log("✅ WebSocket conectado.");
